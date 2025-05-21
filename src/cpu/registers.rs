@@ -24,4 +24,9 @@ impl Reg16 {
     pub fn write(&self, val: u16) {
         *self.value.borrow_mut() = val;
     }
+
+    pub fn inc(&self) {
+        let new = self.read().wrapping_add(1);
+        self.write(new);
+    }
 }
