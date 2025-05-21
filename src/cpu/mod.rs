@@ -1,3 +1,4 @@
+mod instructions;
 mod registers;
 
 use crate::peripheral::Peripheral;
@@ -23,5 +24,11 @@ impl Cpu {
         let instr = bus.read(addr);
         self.reg.pc().inc();
         instr
+    }
+
+    fn decode(&self, instr: u8) {
+        match instr {
+            _ => panic!("Not implemented: {:02x}", instr),
+        }
     }
 }
