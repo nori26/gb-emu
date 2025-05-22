@@ -12,6 +12,21 @@ impl Registers {
 }
 
 #[derive(Default, Debug)]
+pub struct Reg8 {
+    value: RefCell<u8>,
+}
+
+impl Reg8 {
+    pub fn read(&self) -> u8 {
+        *self.value.borrow()
+    }
+
+    pub fn write(&self, val: u8) {
+        *self.value.borrow_mut() = val;
+    }
+}
+
+#[derive(Default, Debug)]
 pub struct Reg16 {
     value: RefCell<u16>,
 }
