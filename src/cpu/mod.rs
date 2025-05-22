@@ -14,6 +14,10 @@ impl Cpu {
         }
     }
 
+    pub fn emulate_cycle(&mut self, bus: &mut Peripheral) {
+        let instr = self.fetch(bus);
+    }
+
     fn fetch(&self, bus: &Peripheral) -> u8 {
         let addr = self.reg.pc().read();
         let instr = bus.read(addr);
