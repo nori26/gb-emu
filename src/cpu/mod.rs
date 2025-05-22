@@ -17,6 +17,7 @@ impl Cpu {
 
     pub fn emulate_cycle(&mut self, bus: &mut Peripheral) {
         let instr = self.fetch(bus);
+        self.decode(instr);
     }
 
     fn fetch(&self, bus: &Peripheral) -> u8 {
