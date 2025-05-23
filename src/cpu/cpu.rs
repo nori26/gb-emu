@@ -1,8 +1,5 @@
-mod instructions;
-mod registers;
-
 use crate::peripheral::Peripheral;
-use registers::Registers;
+use crate::cpu::registers::Registers;
 
 pub struct Cpu {
     reg: Registers,
