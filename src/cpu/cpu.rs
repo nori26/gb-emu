@@ -1,5 +1,7 @@
 use crate::peripheral::Peripheral;
 use crate::cpu::registers::Registers;
+use crate::cpu::instruction_set::*;
+use crate::cpu::Instruction;
 
 pub struct Cpu {
     reg: Registers,
@@ -24,8 +26,9 @@ impl Cpu {
         instr
     }
 
-    fn decode(&self, instr: u8) {
+    fn decode(&self, instr: u8) -> Box<dyn Instruction> {
         match instr {
+            0x00 => Box::new(Nop::new()),
             _ => panic!("Not implemented: {:02x}", instr),
         }
     }

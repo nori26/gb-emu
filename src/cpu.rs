@@ -1,4 +1,5 @@
 pub mod cpu;
+mod instruction_set;
 mod registers;
 
 pub use cpu::Cpu;
