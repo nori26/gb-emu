@@ -1,5 +1,5 @@
-use std::cell::RefCell;
 use crate::cpu::instruction_set::{DstOperand, SrcOperand};
+use std::cell::RefCell;
 
 #[derive(Default, Debug)]
 pub struct Registers {
@@ -13,7 +13,7 @@ impl Registers {
 }
 
 #[derive(Default, Debug)]
-pub struct Reg8 (RefCell<u8>);
+pub struct Reg8(RefCell<u8>);
 
 impl DstOperand<u8> for Reg8 {
     fn write(&self, val: u8) -> Option<()> {
@@ -28,7 +28,7 @@ impl SrcOperand<u8> for Reg8 {
 }
 
 #[derive(Default, Debug)]
-pub struct Reg16 (RefCell<u16>);
+pub struct Reg16(RefCell<u16>);
 
 impl Reg16 {
     pub fn inc(&self) {
