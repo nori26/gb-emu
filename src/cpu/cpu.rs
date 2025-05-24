@@ -1,7 +1,7 @@
-use crate::peripheral::Peripheral;
-use crate::cpu::registers::Registers;
-use crate::cpu::instruction_set::*;
 use crate::cpu::Instruction;
+use crate::cpu::instruction_set::*;
+use crate::cpu::registers::Registers;
+use crate::peripheral::Peripheral;
 
 pub struct Cpu {
     reg: Registers,
