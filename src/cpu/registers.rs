@@ -1,4 +1,5 @@
 use std::cell::RefCell;
+use crate::cpu::instruction_set::{DstOperand, SrcOperand};
 
 #[derive(Default, Debug)]
 pub struct Registers {
@@ -16,13 +17,15 @@ pub struct Reg8 {
     value: RefCell<u8>,
 }
 
-impl Reg8 {
-    pub fn read(&self) -> u8 {
-        *self.value.borrow()
-    }
+impl DstOperand<u8> for Reg8 {
+    fn write(&self, val: u8) -> Option<()> {
+        Some(()).inspect(|_| *self.value.borrow_mut() = val)
+    }    
+}
 
-    pub fn write(&self, val: u8) {
-        *self.value.borrow_mut() = val;
+impl SrcOperand<u8> for Reg8 {
+    fn read(&self) -> Option<u8> {
+        Some(*self.value.borrow())
     }
 }
 
