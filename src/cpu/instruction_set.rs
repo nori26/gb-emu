@@ -1,4 +1,6 @@
 pub mod nop;
+pub mod ld;
+
 pub use nop::Nop;
 
 type Dst<T> = Box<dyn DstOperand<T>>;
