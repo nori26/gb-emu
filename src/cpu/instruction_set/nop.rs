@@ -1,26 +1,24 @@
 use crate::cpu::Instruction;
 
 pub struct Nop {
-    step: u32,
+    is_done: bool,
 }
 
 impl Nop {
     pub fn new() -> Self {
-        Self {
-            step: 0,
-        }
+        Self { is_done: false }
     }
 }
 
 impl Instruction for Nop {
     fn exec(&mut self) {
-        if self.step != 0 {
+        if self.is_done() {
             panic!("No steps remaining.");
         }
-        self.step += 1;
+        self.is_done = true;
     }
 
     fn is_done(&self) -> bool {
-        true
+        self.is_done
     }
 }
