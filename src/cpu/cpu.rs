@@ -21,7 +21,7 @@ impl Cpu {
     }
 
     fn fetch(&self, bus: &Peripheral) -> u8 {
-        let addr = self.reg.pc().read();
+        let addr = self.reg.pc().read().unwrap();
         let instr = bus.read(addr);
         self.reg.pc().inc();
         instr
