@@ -13,19 +13,17 @@ impl Registers {
 }
 
 #[derive(Default, Debug)]
-pub struct Reg8 {
-    value: RefCell<u8>,
-}
+pub struct Reg8 (RefCell<u8>);
 
 impl DstOperand<u8> for Reg8 {
     fn write(&self, val: u8) -> Option<()> {
-        Some(()).inspect(|_| *self.value.borrow_mut() = val)
+        Some(()).inspect(|_| *self.0.borrow_mut() = val)
     }
 }
 
 impl SrcOperand<u8> for Reg8 {
     fn read(&self) -> Option<u8> {
-        Some(*self.value.borrow())
+        Some(*self.0.borrow())
     }
 }
 
