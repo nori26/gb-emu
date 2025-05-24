@@ -30,9 +30,7 @@ impl SrcOperand<u8> for Reg8 {
 }
 
 #[derive(Default, Debug)]
-pub struct Reg16 {
-    value: RefCell<u16>,
-}
+pub struct Reg16 (RefCell<u16>);
 
 impl Reg16 {
     pub fn inc(&self) {
@@ -43,12 +41,12 @@ impl Reg16 {
 
 impl DstOperand<u16> for Reg16 {
     fn write(&self, val: u16) -> Option<()> {
-        Some(()).inspect(|_| *self.value.borrow_mut() = val)
-    }    
+        Some(()).inspect(|_| *self.0.borrow_mut() = val)
+    }
 }
 
 impl SrcOperand<u16> for Reg16 {
     fn read(&self) -> Option<u16> {
-        Some(*self.value.borrow())
+        Some(*self.0.borrow())
     }
 }
