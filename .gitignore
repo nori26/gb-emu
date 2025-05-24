@@ -2,7 +2,5 @@
 
 !**/
 !.gitignore
-!*.rs
+!src/**
 !Cargo.toml
-
-target/
