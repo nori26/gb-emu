@@ -1,16 +1,26 @@
 use crate::cpu::Instruction;
-use crate::cpu::instruction_set::{Dst, Src};
+use crate::cpu::instruction_set::{DstOperand, SrcOperand};
 
-pub struct Ld<T: Copy> {
+pub struct Ld<T, D, S>
+where
+    T: Copy,
+    D: DstOperand<T>,
+    S: SrcOperand<T>,
+{
     step: u32,
     is_done: bool,
     loaded: Option<T>,
-    dst: Dst<T>,
-    src: Src<T>,
+    dst: D,
+    src: S,
 }
 
-impl<T: Copy> Ld<T> {
-    pub fn new(dst: Dst<T>, src: Src<T>) -> Self {
+impl<T, D, S> Ld<T, D, S>
+where
+    T: Copy,
+    D: DstOperand<T>,
+    S: SrcOperand<T>,
+{
+    pub fn new(dst: D, src: S) -> Self {
         Self {
             step: 0,
             is_done: false,
@@ -31,7 +41,12 @@ impl<T: Copy> Ld<T> {
     }
 }
 
-impl<T: Copy> Instruction for Ld<T> {
+impl<T, D, S> Instruction for Ld<T, D, S>
+where
+    T: Copy,
+    D: DstOperand<T>,
+    S: SrcOperand<T>,
+{
     fn exec(&mut self) {
         if self.is_done() {
             panic!("No steps remaining.");
