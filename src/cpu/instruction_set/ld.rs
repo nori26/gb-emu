@@ -1,11 +1,11 @@
 use crate::cpu::Instruction;
-use crate::cpu::instruction_set::{DstOperand, SrcOperand};
+use crate::cpu::instruction_set::{Readable, Writable};
 
 pub struct Ld<T, D, S>
 where
     T: Copy,
-    D: DstOperand<T>,
-    S: SrcOperand<T>,
+    D: Writable<T>,
+    S: Readable<T>,
 {
     step: u32,
     is_done: bool,
@@ -17,8 +17,8 @@ where
 impl<T, D, S> Ld<T, D, S>
 where
     T: Copy,
-    D: DstOperand<T>,
-    S: SrcOperand<T>,
+    D: Writable<T>,
+    S: Readable<T>,
 {
     pub fn new(dst: D, src: S) -> Self {
         Self {
@@ -44,8 +44,8 @@ where
 impl<T, D, S> Instruction for Ld<T, D, S>
 where
     T: Copy,
-    D: DstOperand<T>,
-    S: SrcOperand<T>,
+    D: Writable<T>,
+    S: Readable<T>,
 {
     fn exec(&mut self) {
         if self.is_done() {
