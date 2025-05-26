@@ -1,3 +1,4 @@
+use crate::cpu::DummyInstruction;
 use crate::cpu::Instruction;
 use crate::cpu::instruction_set::*;
 use crate::cpu::register_file::RegisterFile;
@@ -5,12 +6,14 @@ use crate::peripheral::Peripheral;
 
 pub struct Cpu {
     reg: RegisterFile,
+    instruction: Box<dyn Instruction>,
 }
 
 impl Cpu {
     pub fn new() -> Self {
         Self {
             reg: RegisterFile::default(),
+            instruction: Box::new(DummyInstruction::new()),
         }
     }
 

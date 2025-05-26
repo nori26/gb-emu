@@ -6,6 +6,7 @@ mod register_file;
 mod registers;
 
 pub use cpu::Cpu;
+pub use dummy_instruction::DummyInstruction;
 
 pub trait Instruction {
     fn exec(&mut self);
