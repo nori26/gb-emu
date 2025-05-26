@@ -1,16 +1,16 @@
 use crate::cpu::Instruction;
 use crate::cpu::instruction_set::*;
-use crate::cpu::registers::Registers;
+use crate::cpu::register_file::RegisterFile;
 use crate::peripheral::Peripheral;
 
 pub struct Cpu {
-    reg: Registers,
+    reg: RegisterFile,
 }
 
 impl Cpu {
     pub fn new() -> Self {
         Self {
-            reg: Registers::default(),
+            reg: RegisterFile::default(),
         }
     }
 

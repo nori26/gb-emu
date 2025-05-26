@@ -2,17 +2,6 @@ use crate::cpu::instruction_set::{Writable, Readable};
 use std::cell::RefCell;
 
 #[derive(Default, Debug)]
-pub struct Registers {
-    pc: Reg16,
-}
-
-impl Registers {
-    pub fn pc(&self) -> &Reg16 {
-        &self.pc
-    }
-}
-
-#[derive(Default, Debug)]
 pub struct Reg8(RefCell<u8>);
 
 impl Writable<u8> for Reg8 {
