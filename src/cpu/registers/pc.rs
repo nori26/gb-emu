@@ -5,8 +5,9 @@ use std::cell::RefCell;
 #[derive(Default, Debug)]
 pub struct ProgramCounter(RefCell<u16>);
 
-impl cpu::ProgramCounter<u16> for ProgramCounter {
-    fn next(&self) -> u16 {
+impl cpu::ProgramCounter for ProgramCounter {
+    type Value = u16;
+    fn next(&self) -> Self::Value {
         let old = self.load();
         self.store(old.wrapping_add(1));
         old

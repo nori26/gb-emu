@@ -19,6 +19,7 @@ pub trait Register {
     fn store(&self, val: Self::Value);
 }
 
-pub trait ProgramCounter<T: Copy> {
-    fn next(&self) -> T;
+pub trait ProgramCounter {
+    type Value: Copy;
+    fn next(&self) -> Self::Value;
 }

@@ -7,7 +7,7 @@ pub struct RegisterFile {
 }
 
 impl RegisterFile {
-    pub fn pc(&self) -> &dyn IProgramCounter<u16> {
+    pub fn pc(&self) -> &dyn IProgramCounter<Value = u16> {
         &self.pc
     }
 }
