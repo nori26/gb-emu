@@ -8,3 +8,5 @@ pub trait Register {
     fn read(&self) -> Self::Value;
     fn write(&self, val: Self::Value);
 }
+
+trait Addressable {}
