@@ -9,3 +9,8 @@ pub trait Instruction {
     fn exec(&mut self);
     fn is_done(&self) -> bool;
 }
+
+pub trait Register<T: Copy> {
+    fn load(&self) -> T;
+    fn store(&self, val: T);
+}
