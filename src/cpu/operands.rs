@@ -1,4 +1,6 @@
+pub mod reg;
 pub mod reg8x2;
+
 
 pub trait Register {
     type Value: Copy;
