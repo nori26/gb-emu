@@ -1,5 +1,6 @@
 pub mod cpu;
 mod instruction_set;
+mod operands;
 mod register_file;
 mod registers;
 
