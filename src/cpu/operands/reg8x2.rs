@@ -1,19 +1,20 @@
 use crate::cpu::instruction_set::{Readable, Writable};
 use crate::cpu::operands::Register;
+use std::rc::Rc;
 
-pub struct Reg8x2<'a, Reg8>
+pub struct Reg8x2<Reg8>
 where
     Reg8: Register<u8>,
 {
-    high: &'a Reg8,
-    low: &'a Reg8,
+    high: Rc<Reg8>,
+    low: Rc<Reg8>,
 }
 
-impl<'a, Reg8> Reg8x2<'a, Reg8>
+impl<Reg8> Reg8x2<Reg8>
 where
     Reg8: Register<u8>,
 {
-    pub fn new(high: &'a Reg8, low: &'a Reg8) -> Self {
+    pub fn new(high: Rc<Reg8>, low: Rc<Reg8>) -> Self {
         Self {
             high: high,
             low: low,
@@ -21,7 +22,7 @@ where
     }
 }
 
-impl<'a, Reg8> Writable<u16> for Reg8x2<'a, Reg8>
+impl<Reg8> Writable<u16> for Reg8x2<Reg8>
 where
     Reg8: Register<u8>,
 {
@@ -35,7 +36,7 @@ where
     }
 }
 
-impl<'a, Reg8> Readable<u16> for Reg8x2<'a, Reg8>
+impl<Reg8> Readable<u16> for Reg8x2<Reg8>
 where
     Reg8: Register<u8>,
 {
