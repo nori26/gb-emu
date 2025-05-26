@@ -14,3 +14,7 @@ pub trait Register<T: Copy> {
     fn load(&self) -> T;
     fn store(&self, val: T);
 }
+
+pub trait ProgramCounter<T: Copy> {
+    fn next(&self) -> T;
+}
