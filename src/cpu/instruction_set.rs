@@ -3,10 +3,12 @@ pub mod nop;
 
 pub use nop::Nop;
 
-pub trait Readable<T> {
-    fn read(&self) -> Option<T>;
+pub trait Readable {
+	type Value: Copy;
+    fn read(&self) -> Option<Self::Value>;
 }
 
-pub trait Writable<T> {
-    fn write(&self, val: T) -> Option<()>;
+pub trait Writable {
+	type Value: Copy;
+    fn write(&self, val: Self::Value) -> Option<()>;
 }
