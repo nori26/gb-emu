@@ -1,4 +1,5 @@
 use crate::cpu::instruction_set::{Readable, Writable};
+use crate::cpu::operands::Addressable;
 use crate::cpu::operands::Register;
 use std::rc::Rc;
 
@@ -50,3 +51,5 @@ where
         Some(high << u8::BITS | low)
     }
 }
+
+impl<Reg8> Addressable for Reg8x2<Reg8> where Reg8: Register<Value = u8> {}
