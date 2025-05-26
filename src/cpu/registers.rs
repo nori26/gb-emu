@@ -1,4 +1,3 @@
 pub mod pc;
 pub mod registers;
-
-pub use registers::Reg16;
+pub use pc::ProgramCounter;

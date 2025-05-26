@@ -1,12 +1,12 @@
-use crate::cpu::registers::Reg16;
+use crate::cpu::registers::*;
 
 #[derive(Default, Debug)]
 pub struct RegisterFile {
-    pc: Reg16,
+    pc: ProgramCounter,
 }
 
 impl RegisterFile {
-    pub fn pc(&self) -> &Reg16 {
+    pub fn pc(&self) -> &ProgramCounter {
         &self.pc
     }
 }

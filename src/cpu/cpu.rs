@@ -1,4 +1,5 @@
 use crate::cpu::Instruction;
+use crate::cpu::ProgramCounter;
 use crate::cpu::instruction_set::*;
 use crate::cpu::register_file::RegisterFile;
 use crate::peripheral::Peripheral;
@@ -21,10 +22,8 @@ impl Cpu {
     }
 
     fn fetch(&self, bus: &Peripheral) -> u8 {
-        let addr = self.reg.pc().read().unwrap();
-        let instr = bus.read(addr);
-        self.reg.pc().inc();
-        instr
+        let addr = self.reg.pc().next();
+        bus.read(addr)
     }
 
     fn decode(&self, instr: u8) -> Box<dyn Instruction> {
