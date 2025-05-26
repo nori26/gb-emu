@@ -1,4 +1,5 @@
 use crate::cpu::instruction_set::Readable;
+use crate::cpu::operands::Addressable;
 use crate::cpu::operands::Register;
 use std::marker::PhantomData;
 use std::rc::Rc;
@@ -33,3 +34,5 @@ where
         Some(self.val)
     }
 }
+
+impl<const HIGH: u8, LOW> Addressable for FixedHi<HIGH, LOW> where LOW: Register<Value = u8> {}
