@@ -1,6 +1,7 @@
 pub mod reg8x2;
 
-pub trait Register<T: Copy> {
-    fn read(&self) -> T;
-    fn write(&self, val: T);
+pub trait Register {
+    type Value: Copy;
+    fn read(&self) -> Self::Value;
+    fn write(&self, val: Self::Value);
 }

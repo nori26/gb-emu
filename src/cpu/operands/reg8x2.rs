@@ -4,7 +4,7 @@ use std::rc::Rc;
 
 pub struct Reg8x2<Reg8>
 where
-    Reg8: Register<u8>,
+    Reg8: Register<Value = u8>,
 {
     high: Rc<Reg8>,
     low: Rc<Reg8>,
@@ -12,7 +12,7 @@ where
 
 impl<Reg8> Reg8x2<Reg8>
 where
-    Reg8: Register<u8>,
+    Reg8: Register<Value = u8>,
 {
     pub fn new(high: Rc<Reg8>, low: Rc<Reg8>) -> Self {
         Self {
@@ -24,7 +24,7 @@ where
 
 impl<Reg8> Writable for Reg8x2<Reg8>
 where
-    Reg8: Register<u8>,
+    Reg8: Register<Value = u8>,
 {
     type Value = u16;
 
@@ -40,7 +40,7 @@ where
 
 impl<Reg8> Readable for Reg8x2<Reg8>
 where
-    Reg8: Register<u8>,
+    Reg8: Register<Value = u8>,
 {
     type Value = u16;
 
