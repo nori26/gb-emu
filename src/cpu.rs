@@ -13,9 +13,10 @@ pub trait Instruction {
     fn is_done(&self) -> bool;
 }
 
-pub trait Register<T: Copy> {
-    fn load(&self) -> T;
-    fn store(&self, val: T);
+pub trait Register {
+    type Value: Copy;
+    fn load(&self) -> Self::Value;
+    fn store(&self, val: Self::Value);
 }
 
 pub trait ProgramCounter<T: Copy> {

@@ -4,12 +4,14 @@ use std::cell::RefCell;
 #[derive(Default, Debug)]
 pub struct Flag(RefCell<u8>);
 
-impl Register<u8> for Flag {
-    fn load(&self) -> u8 {
+impl Register for Flag {
+    type Value = u8;
+
+    fn load(&self) -> Self::Value {
         *self.0.borrow()
     }
 
-    fn store(&self, val: u8) {
+    fn store(&self, val: Self::Value) {
         *self.0.borrow_mut() = val & 0xF0;
     }
 }

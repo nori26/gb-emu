@@ -13,12 +13,14 @@ impl cpu::ProgramCounter<u16> for ProgramCounter {
     }
 }
 
-impl Register<u16> for ProgramCounter {
-    fn load(&self) -> u16 {
+impl Register for ProgramCounter {
+    type Value = u16;
+
+    fn load(&self) -> Self::Value {
         *self.0.borrow()
     }
 
-    fn store(&self, val: u16) {
+    fn store(&self, val: Self::Value) {
         *self.0.borrow_mut() = val;
     }
 }
