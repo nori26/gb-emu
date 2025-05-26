@@ -1,5 +1,4 @@
 use crate::cpu::Instruction;
-use crate::cpu::ProgramCounter;
 use crate::cpu::instruction_set::*;
 use crate::cpu::register_file::RegisterFile;
 use crate::peripheral::Peripheral;

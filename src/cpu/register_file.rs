@@ -1,3 +1,4 @@
+use crate::cpu::ProgramCounter as IProgramCounter;
 use crate::cpu::registers::*;
 
 #[derive(Default, Debug)]
@@ -6,7 +7,7 @@ pub struct RegisterFile {
 }
 
 impl RegisterFile {
-    pub fn pc(&self) -> &ProgramCounter {
+    pub fn pc(&self) -> &dyn IProgramCounter<u16> {
         &self.pc
     }
 }
