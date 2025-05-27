@@ -1,5 +1,5 @@
+use crate::cpu::Register;
 use crate::cpu::instruction_set::{Readable, Writable};
-use crate::cpu::operands::Register;
 use std::rc::Rc;
 
 pub struct Reg<RegN>
@@ -26,7 +26,7 @@ where
 
     fn write(&self, val: Self::Value) -> Option<()> {
         Some(()).inspect(|_| {
-            self.reg.write(val);
+            self.reg.store(val);
         })
     }
 }
@@ -38,6 +38,6 @@ where
     type Value = RegN::Value;
 
     fn read(&self) -> Option<Self::Value> {
-        Some(self.reg.read())
+        Some(self.reg.load())
     }
 }

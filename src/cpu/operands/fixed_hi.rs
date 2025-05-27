@@ -1,6 +1,6 @@
+use crate::cpu::Register;
 use crate::cpu::instruction_set::Readable;
 use crate::cpu::operands::Addressable;
-use crate::cpu::operands::Register;
 use std::marker::PhantomData;
 use std::rc::Rc;
 
@@ -18,7 +18,7 @@ where
 {
     pub fn new(low: Rc<LOW>) -> Self {
         Self {
-            val: (HIGH as u16) << u8::BITS | low.read() as u16,
+            val: (HIGH as u16) << u8::BITS | low.load() as u16,
             _pd: PhantomData,
         }
     }
