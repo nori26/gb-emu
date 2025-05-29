@@ -29,7 +29,7 @@ where
 {
     type Value = u16;
 
-    fn write(&self, val: u16) -> Option<()> {
+    fn write(&mut self, val: u16) -> Option<()> {
         Some(()).inspect(|_| {
             let low = (val & 0xFF) as u8;
             let high = (val >> u8::BITS) as u8;
@@ -45,7 +45,7 @@ where
 {
     type Value = u16;
 
-    fn read(&self) -> Option<u16> {
+    fn read(&mut self) -> Option<u16> {
         let low = self.low.load() as u16;
         let high = self.high.load() as u16;
         Some(high << u8::BITS | low)

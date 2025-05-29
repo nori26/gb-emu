@@ -27,7 +27,7 @@ where
 {
     type Value = u16;
 
-    fn write(&self, val: u16) -> Option<()> {
+    fn write(&mut self, val: u16) -> Option<()> {
         self.reg.write(val)
     }
 }
@@ -38,7 +38,7 @@ where
 {
     type Value = u16;
 
-    fn read(&self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<Self::Value> {
         self.reg.read().inspect(|val| {
             self.write(val.wrapping_add(1));
         })

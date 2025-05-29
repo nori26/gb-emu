@@ -5,10 +5,10 @@ pub use nop::Nop;
 
 pub trait Readable {
 	type Value: Copy;
-    fn read(&self) -> Option<Self::Value>;
+    fn read(&mut self) -> Option<Self::Value>;
 }
 
 pub trait Writable {
 	type Value: Copy;
-    fn write(&self, val: Self::Value) -> Option<()>;
+    fn write(&mut self, val: Self::Value) -> Option<()>;
 }

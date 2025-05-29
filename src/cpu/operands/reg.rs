@@ -24,7 +24,7 @@ where
 {
     type Value = RegN::Value;
 
-    fn write(&self, val: Self::Value) -> Option<()> {
+    fn write(&mut self, val: Self::Value) -> Option<()> {
         Some(()).inspect(|_| {
             self.reg.store(val);
         })
@@ -37,7 +37,7 @@ where
 {
     type Value = RegN::Value;
 
-    fn read(&self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<Self::Value> {
         Some(self.reg.load())
     }
 }

@@ -30,7 +30,7 @@ where
 {
     type Value = u16;
 
-    fn read(&self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<Self::Value> {
         Some(self.val)
     }
 }
