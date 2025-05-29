@@ -24,13 +24,11 @@ where
     }
 }
 
-impl<const HIGH: u8, LOW> Readable for FixedHi<HIGH, LOW>
+impl<const HIGH: u8, LOW> Readable<u16> for FixedHi<HIGH, LOW>
 where
     LOW: Register<Value = u8>,
 {
-    type Value = u16;
-
-    fn read(&mut self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<u16> {
         Some(self.val)
     }
 }

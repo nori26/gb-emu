@@ -27,13 +27,11 @@ where
     }
 }
 
-impl<PC> Readable for Imm8<PC>
+impl<PC> Readable<u8> for Imm8<PC>
 where
     PC: ProgramCounter<Value = u16>,
 {
-    type Value = u8;
-
-    fn read(&mut self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<u8> {
         let result = if self.is_fetch_phase {
             self.tmp = self.bus.read(self.pc.next());
             None

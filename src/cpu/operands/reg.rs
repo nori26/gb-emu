@@ -18,26 +18,22 @@ where
     }
 }
 
-impl<RegN> Writable for Reg<RegN>
+impl<RegN> Writable<RegN::Value> for Reg<RegN>
 where
     RegN: Register,
 {
-    type Value = RegN::Value;
-
-    fn write(&mut self, val: Self::Value) -> Option<()> {
+    fn write(&mut self, val: RegN::Value) -> Option<()> {
         Some(()).inspect(|_| {
             self.reg.store(val);
         })
     }
 }
 
-impl<RegN> Readable for Reg<RegN>
+impl<RegN> Readable<RegN::Value> for Reg<RegN>
 where
     RegN: Register,
 {
-    type Value = RegN::Value;
-
-    fn read(&mut self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<RegN::Value> {
         Some(self.reg.load())
     }
 }

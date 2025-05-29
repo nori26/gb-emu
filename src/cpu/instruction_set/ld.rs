@@ -1,22 +1,24 @@
 use crate::cpu::Instruction;
 use crate::cpu::instruction_set::{Readable, Writable};
 
-pub struct Ld<D, S>
+pub struct Ld<T, D, S>
 where
-    D: Writable,
-    S: Readable<Value = D::Value>,
+    T: Copy,
+    D: Writable<T>,
+    S: Readable<T>,
 {
     step: u32,
     is_done: bool,
-    loaded: Option<D::Value>,
+    loaded: Option<T>,
     dst: D,
     src: S,
 }
 
-impl<D, S> Ld<D, S>
+impl<T, D, S> Ld<T, D, S>
 where
-    D: Writable,
-    S: Readable<Value = D::Value>,
+    T: Copy,
+    D: Writable<T>,
+    S: Readable<T>,
 {
     pub fn new(dst: D, src: S) -> Self {
         Self {
@@ -39,10 +41,11 @@ where
     }
 }
 
-impl<D, S> Instruction for Ld<D, S>
+impl<T, D, S> Instruction for Ld<T, D, S>
 where
-    D: Writable,
-    S: Readable<Value = D::Value>,
+    T: Copy,
+    D: Writable<T>,
+    S: Readable<T>,
 {
     fn exec(&mut self) {
         if self.is_done() {

@@ -27,13 +27,11 @@ where
     }
 }
 
-impl<PC> Readable for Imm16<PC>
+impl<PC> Readable<u16> for Imm16<PC>
 where
     PC: ProgramCounter<Value = u16>,
 {
-    type Value = u16;
-
-    fn read(&mut self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<u16> {
         const STEP_MAX: u8 = 2;
 
         while self.step < STEP_MAX {

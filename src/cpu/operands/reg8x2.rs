@@ -23,12 +23,10 @@ where
     }
 }
 
-impl<Reg8> Writable for Reg8x2<Reg8>
+impl<Reg8> Writable<u16> for Reg8x2<Reg8>
 where
     Reg8: Register<Value = u8>,
 {
-    type Value = u16;
-
     fn write(&mut self, val: u16) -> Option<()> {
         Some(()).inspect(|_| {
             let low = (val & 0xFF) as u8;
@@ -39,12 +37,10 @@ where
     }
 }
 
-impl<Reg8> Readable for Reg8x2<Reg8>
+impl<Reg8> Readable<u16> for Reg8x2<Reg8>
 where
     Reg8: Register<Value = u8>,
 {
-    type Value = u16;
-
     fn read(&mut self) -> Option<u16> {
         let low = self.low.load() as u16;
         let high = self.high.load() as u16;

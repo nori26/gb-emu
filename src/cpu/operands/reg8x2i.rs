@@ -21,24 +21,20 @@ where
     }
 }
 
-impl<Reg8> Writable for Reg8x2i<Reg8>
+impl<Reg8> Writable<u16> for Reg8x2i<Reg8>
 where
     Reg8: Register<Value = u8>,
 {
-    type Value = u16;
-
     fn write(&mut self, val: u16) -> Option<()> {
         self.reg.write(val)
     }
 }
 
-impl<Reg8> Readable for Reg8x2i<Reg8>
+impl<Reg8> Readable<u16> for Reg8x2i<Reg8>
 where
     Reg8: Register<Value = u8>,
 {
-    type Value = u16;
-
-    fn read(&mut self) -> Option<Self::Value> {
+    fn read(&mut self) -> Option<u16> {
         self.reg.read().inspect(|val| {
             self.write(val.wrapping_add(1));
         })
