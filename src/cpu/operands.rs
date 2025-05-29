@@ -1,3 +1,4 @@
+pub mod deref_r;
 pub mod fixed_hi;
 pub mod imm16;
 pub mod imm8;
