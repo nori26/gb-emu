@@ -1,6 +1,5 @@
 use crate::cpu::Register;
 use crate::cpu::instruction_set::{Readable, Writable};
-use crate::cpu::operands::Addressable;
 use crate::cpu::operands::reg8x2::Reg8x2;
 use std::rc::Rc;
 
@@ -40,5 +39,3 @@ where
         })
     }
 }
-
-impl<Reg8> Addressable for Reg8x2d<Reg8> where Reg8: Register<Value = u8> {}

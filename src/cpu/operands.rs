@@ -10,4 +10,3 @@ pub mod reg8x2i;
 
 pub use imm8::Imm8;
 
-trait Addressable {}

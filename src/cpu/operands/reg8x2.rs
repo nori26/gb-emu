@@ -1,6 +1,5 @@
 use crate::cpu::Register;
 use crate::cpu::instruction_set::{Readable, Writable};
-use crate::cpu::operands::Addressable;
 use std::rc::Rc;
 
 pub struct Reg8x2<Reg8>
@@ -47,5 +46,3 @@ where
         Some(high << u8::BITS | low)
     }
 }
-
-impl<Reg8> Addressable for Reg8x2<Reg8> where Reg8: Register<Value = u8> {}

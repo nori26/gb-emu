@@ -1,6 +1,5 @@
 use crate::cpu::ProgramCounter;
 use crate::cpu::instruction_set::Readable;
-use crate::cpu::operands::Addressable;
 use crate::cpu::operands::Imm8;
 use crate::peripheral::Peripheral;
 use std::rc::Rc;
@@ -48,5 +47,3 @@ where
         Some(self.data)
     }
 }
-
-impl<PC> Addressable for Imm16<PC> where PC: ProgramCounter<Value = u16> {}
